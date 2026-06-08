@@ -43,3 +43,19 @@ Ela não é apenas um template de site. Ela é um fluxo de trabalho.
 - Não deixe decisões importantes apenas no chat.
 - Não exponha segredos, tokens, chaves de API ou `.env`.
 - Peça para o agente atualizar os arquivos antes de encerrar a sessão.
+
+## Ordem recomendada com GitHub
+
+Antes de iniciar um projeto real baseado na Project Base, siga esta ordem:
+
+1. Criar um repositório privado no GitHub.
+2. Não marcar README, .gitignore ou licença se a base já tiver esses arquivos.
+3. Criar/copiar a base localmente.
+4. Fazer o primeiro commit.
+5. Conectar o remote origin.
+6. Fazer o primeiro push.
+7. Conferir se origin/main aparece corretamente.
+
+Guia completo:
+
+- `docs/workflows/GITHUB_REPOSITORY_SETUP.md`

@@ -28,3 +28,11 @@ A Project Base existe para transformar uma ideia solta em uma base organizada de
 ## Regra principal
 
 A documentação deve estar viva. Se o projeto muda, os arquivos de memória, progresso, decisões e relatórios também devem mudar.
+
+## GitHub
+
+Antes de usar esta base em um projeto real, crie o repositório no GitHub e depois conecte o projeto local ao remote.
+
+Guia completo:
+
+- `docs/workflows/GITHUB_REPOSITORY_SETUP.md`

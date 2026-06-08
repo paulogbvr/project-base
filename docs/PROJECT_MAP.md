@@ -31,4 +31,5 @@
 - `docs/agent-state` — estado vivo da sessão do agente
 - `docs/agent-reports` — relatórios finais dos agentes
 - `docs/workflows` — fluxos reutilizáveis
+- `docs/workflows/GITHUB_REPOSITORY_SETUP.md` — criação do repositório GitHub, remote e primeiro push
 - `resources/skills` — recursos auxiliares fora do sistema principal
