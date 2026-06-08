@@ -259,6 +259,252 @@ Ordem recomendada:
 6. Fazer o primeiro push.
 7. Conferir se `origin/main` aparece corretamente.
 
+<!-- PROJECT_BASE_CLONE_TUTORIAL_START -->
+
+## Como criar um novo projeto usando a Project Base
+
+Este tutorial mostra como criar um novo projeto a partir da Project Base sem apagar a base original.
+
+A Project Base oficial está neste repositório:
+
+```txt
+https://github.com/paulogbvr/project-base.git
+```
+
+Você pode clonar esse repositório quantas vezes quiser, sempre usando um nome diferente para a pasta do novo projeto.
+
+Exemplo de organização:
+
+```txt
+nome-da-sua-pasta-de-projetos/
+  project-base/
+  nome-da-pasta-do-projeto/
+```
+
+A pasta `project-base` pode continuar no computador como referência/base original.
+
+O novo projeto deve ficar em outra pasta.
+
+## 1. Entrar na pasta onde ficam seus projetos
+
+Substitua `nome-da-sua-pasta-de-projetos` pelo caminho da pasta onde você guarda seus projetos.
+
+```bash
+cd nome-da-sua-pasta-de-projetos
+```
+
+## 2. Clonar a Project Base com o nome do novo projeto
+
+Substitua `nome-da-pasta-do-projeto` pelo nome da pasta que você quer criar para o novo projeto.
+
+```bash
+git clone https://github.com/paulogbvr/project-base.git nome-da-pasta-do-projeto
+```
+
+Isso cria uma nova pasta baseada na Project Base.
+
+A pasta `project-base` original não será apagada nem alterada.
+
+## 3. Entrar na pasta do novo projeto
+
+```bash
+cd nome-da-pasta-do-projeto
+```
+
+## 4. Remover o Git antigo da Project Base
+
+Este passo é importante.
+
+Quando você clona a Project Base, o novo projeto ainda vem conectado ao repositório original da Project Base.
+
+Para transformar essa cópia em um projeto novo, remova o Git antigo:
+
+```bash
+rm -rf .git
+```
+
+## 5. Iniciar um Git novo para o novo projeto
+
+```bash
+git init
+git add .
+git commit -m "Initial project from Project Base"
+```
+
+## 6. Criar um novo repositório no GitHub
+
+Agora crie um repositório novo no seu GitHub para esse novo projeto.
+
+Use:
+
+```txt
+Repository name: nome-do-repositorio
+Description: descrição curta do projeto
+Visibility: Private ou Public
+README: não marcar
+.gitignore: não marcar
+License: não marcar
+```
+
+Não marque README, `.gitignore` ou licença, porque a Project Base já tem esses arquivos.
+
+## 7. Conectar o projeto local ao novo repositório
+
+Substitua `usuario-do-github` pelo seu usuário do GitHub.
+
+Substitua `nome-do-repositorio` pelo nome do repositório novo que você criou.
+
+```bash
+git branch -M main
+git remote add origin https://github.com/usuario-do-github/nome-do-repositorio.git
+git push -u origin main
+```
+
+## 8. Conferir se deu certo
+
+```bash
+git status --short
+git log --oneline --max-count=3
+git remote -v
+```
+
+O ideal é:
+
+- `git status --short` não mostrar nada;
+- o último commit aparecer no topo;
+- o remote `origin` apontar para o repositório novo do projeto;
+- o remote `origin` não deve apontar para `paulogbvr/project-base`, porque esse é apenas o repositório da base original.
+
+## Exemplo completo com placeholders
+
+Substitua os valores antes de rodar.
+
+```bash
+cd nome-da-sua-pasta-de-projetos
+
+git clone https://github.com/paulogbvr/project-base.git nome-da-pasta-do-projeto
+
+cd nome-da-pasta-do-projeto
+
+rm -rf .git
+
+git init
+git add .
+git commit -m "Initial project from Project Base"
+```
+
+Depois crie o novo repositório no seu GitHub e rode:
+
+```bash
+git branch -M main
+git remote add origin https://github.com/usuario-do-github/nome-do-repositorio.git
+git push -u origin main
+```
+
+## Resumo importante
+
+```txt
+Não apague a pasta project-base.
+Ela é sua base original.
+
+Sempre clone a Project Base com outro nome de pasta.
+Exemplo: nome-da-pasta-do-projeto.
+
+A URL oficial da Project Base é:
+https://github.com/paulogbvr/project-base.git
+
+Depois de clonar, remova o .git antigo.
+Depois crie um Git novo.
+Depois conecte no repositório novo do projeto.
+
+Nunca faça push de um projeto novo para o repositório paulogbvr/project-base.
+Esse repositório é a base original.
+```
+
+<!-- PROJECT_BASE_CLONE_TUTORIAL_END -->
+
+<!-- PROJECT_BASE_AGENT_START -->
+## Agente oficial da Project Base
+
+A Project Base possui um agente próprio no ChatGPT para ajudar no início de novos projetos:
+
+```txt
+Project Base | Architect
+```
+
+Use este agente para transformar uma ideia solta em um projeto bem estruturado antes de começar a codar.
+
+Link do agente:
+
+```txt
+https://chatgpt.com/g/g-6a2655fc5d08819189f90606dbe27800-project-base-architect
+```
+
+## Para que serve
+
+O agente ajuda a:
+
+- fazer uma entrevista guiada sobre o projeto;
+- entender o problema real;
+- organizar requisitos;
+- definir público e usuários;
+- separar MVP do que fica para depois;
+- pensar segurança desde o início;
+- definir design, identidade visual e cor de acento;
+- organizar GitHub, pastas e repositório;
+- gerar comandos de terminal;
+- gerar prompts para Claude/Codex;
+- orientar como conferir `git status`, `git diff`, commits e push;
+- manter o projeto alinhado com a estrutura da Project Base.
+
+## Como usar
+
+Comece uma conversa com o agente e explique sua ideia.
+
+Exemplo:
+
+```txt
+Quero começar um projeto novo usando a Project Base.
+```
+
+O agente deve fazer perguntas antes de gerar comandos ou prompts finais.
+
+Ele também deve perguntar qual sistema operacional você usa:
+
+- macOS;
+- Windows;
+- Linux.
+
+Assim ele consegue gerar comandos corretos para o seu ambiente.
+
+## Fluxo recomendado com o agente
+
+1. Explique a ideia do projeto.
+2. Responda à entrevista guiada.
+3. Confirme o escopo inicial.
+4. Peça para o agente montar o plano.
+5. Peça os comandos de terminal.
+6. Crie o repositório no GitHub.
+7. Rode os comandos localmente.
+8. Use os prompts gerados para trabalhar com Claude/Codex.
+9. Envie os relatórios e arquivos de volta ao agente/ChatGPT para continuar o ciclo.
+
+## Observação importante
+
+O agente não substitui a documentação da Project Base.
+
+Ele serve para guiar o uso da base, organizar a ideia e gerar os próximos passos com mais clareza.
+
+Sempre que o projeto evoluir, mantenha atualizados:
+
+- `docs/agent-state/CURRENT_SESSION.md`
+- `docs/agent-reports/latest.md`
+- `docs/project-memory/TASK_PLAN.md`
+- `docs/project-memory/PROGRESS.md`
+- `docs/project-memory/DECISIONS.md`
+- `docs/project-memory/FINDINGS.md`
+<!-- PROJECT_BASE_AGENT_END -->
+
 ## Fluxo com ChatGPT e agentes
 
 Depois que o agente trabalhar, peça para ele atualizar:
