@@ -293,3 +293,28 @@ Nunca commitar `.env.local`.
 - [ ] Segurança documentada?
 - [ ] Links compartilhados considerados?
 - [ ] Agent-state e reports incluídos?
+
+<!-- NEXT_SAAS_SECURITY_DEFAULTS_START -->
+## Segurança padrão para Next/SaaS
+
+Ao criar um projeto a partir deste template, revisar antes do primeiro deploy:
+
+- secrets não podem usar `NEXT_PUBLIC_`;
+- service role não pode ir para o frontend;
+- variáveis reais devem ficar na Vercel/provedor;
+- `.env` e `.env.local` não podem ser commitados;
+- source maps públicos devem ficar desativados em produção;
+- `localStorage` deve guardar apenas preferências não sensíveis;
+- plano pago deve ser validado no backend;
+- APIs privadas devem validar usuário, plano e permissão;
+- Supabase deve usar RLS em tabelas sensíveis;
+- CORS não deve ser wildcard em API privada;
+- CSP deve ser considerada antes do deploy público.
+
+Documentos relacionados:
+
+- `docs/security/FRONTEND_SECURITY.md`
+- `docs/security/CORS_AND_CSP.md`
+- `docs/security/SECURITY_REVIEW_PROMPT.md`
+- `docs/security/SECURITY_CHECKLIST.md`
+<!-- NEXT_SAAS_SECURITY_DEFAULTS_END -->

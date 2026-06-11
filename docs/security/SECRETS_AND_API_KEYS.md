@@ -162,6 +162,83 @@ Regras:
 - registrar evento recebido;
 - não confiar cegamente no payload.
 
+<!-- FRONTEND_SECRET_EXPOSURE_START -->
+## Exposição de secrets no frontend
+
+Um secret exposto no frontend deve ser tratado como vazado.
+
+Se uma chave aparece em:
+
+- bundle JavaScript;
+- DevTools;
+- Network;
+- source map;
+- localStorage;
+- sessionStorage;
+- código versionado;
+- README;
+- print;
+- log público;
+- resposta de API;
+
+então ela não é mais secreta.
+
+## O que fazer se um secret vazou
+
+1. Revogar a chave imediatamente.
+2. Gerar uma nova chave.
+3. Remover a chave do código/documentação.
+4. Revisar histórico do Git, se necessário.
+5. Atualizar variáveis no provedor de deploy.
+6. Fazer redeploy.
+7. Verificar logs e uso indevido.
+8. Registrar o ocorrido em `docs/project-memory/FINDINGS.md`.
+
+## Busca manual por secrets
+
+Antes de commit/push, rodar uma busca simples por padrões comuns.
+
+Exemplo:
+
+```bash
+grep -RInE "(sk-|ghp_|github_pat_|waka_|service_role|SECRET|TOKEN|PRIVATE_KEY|CLIENT_SECRET)" . \
+  --exclude-dir=.git \
+  --exclude-dir=node_modules \
+  --exclude-dir=.next \
+  --exclude-dir=dist \
+  --exclude="*.png" \
+  --exclude="*.jpg" \
+  --exclude="*.jpeg" \
+  --exclude="*.webp"
+```
+
+Essa busca não substitui scanner profissional, mas ajuda a evitar erros básicos.
+
+## Placeholders permitidos
+
+Placeholders são permitidos quando claramente não são chaves reais.
+
+Exemplos:
+
+```txt
+replace-with-your-api-key
+your-secret-here
+example-token
+placeholder
+```
+
+## Checklist
+
+- [ ] Secrets não aparecem no frontend
+- [ ] Secrets não aparecem em source maps públicos
+- [ ] Secrets não aparecem em localStorage/sessionStorage
+- [ ] Secrets não aparecem em README
+- [ ] Secrets não aparecem em logs
+- [ ] Secrets não aparecem em respostas de API
+- [ ] Busca manual foi rodada antes do commit
+- [ ] Chaves vazadas foram revogadas, não apenas removidas
+<!-- FRONTEND_SECRET_EXPOSURE_END -->
+
 ## Checklist
 
 - [ ] Segredos estão fora do frontend?

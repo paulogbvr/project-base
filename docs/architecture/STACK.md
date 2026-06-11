@@ -381,3 +381,69 @@ Variáveis devem seguir:
 - [ ] Deploy definido?
 - [ ] Dependências justificadas?
 - [ ] Decisões registradas?
+
+<!-- PRODUCTION_FRONTEND_SECURITY_STACK_START -->
+## Configurações de produção relacionadas à segurança
+
+Ao definir a stack do projeto, registrar decisões sobre segurança de frontend e deploy.
+
+## Next.js
+
+Padrão recomendado:
+
+```txt
+productionBrowserSourceMaps: false
+```
+
+Não habilitar source maps públicos em produção sem justificativa.
+
+Se for necessário debug com source maps, preferir upload privado para ferramenta de monitoramento.
+
+## Vite
+
+Padrão recomendado:
+
+```txt
+build.sourcemap = false
+```
+
+Não habilitar source maps públicos em produção sem justificativa.
+
+## Variáveis públicas
+
+Registrar no stack quais variáveis são públicas e por quê.
+
+Prefixos públicos:
+
+- `NEXT_PUBLIC_`
+- `VITE_`
+
+Toda variável com esses prefixos deve ser considerada visível no navegador.
+
+## Deploy
+
+Registrar onde as variáveis reais serão configuradas:
+
+- Vercel;
+- Render;
+- Railway;
+- Netlify;
+- Fly;
+- outro provedor.
+
+Nunca depender de `.env` versionado para produção.
+
+## Cache
+
+Registrar estratégia de cache para:
+
+- páginas públicas;
+- páginas privadas;
+- APIs privadas;
+- dados de usuário;
+- dashboards;
+- relatórios;
+- arquivos.
+
+Dados privados devem evitar cache indevido.
+<!-- PRODUCTION_FRONTEND_SECURITY_STACK_END -->

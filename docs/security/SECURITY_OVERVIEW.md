@@ -115,6 +115,31 @@ Deve prever:
 - validação no backend;
 - logs de acesso quando fizer sentido.
 
+<!-- FRONTEND_SECURITY_OVERVIEW_START -->
+## Segurança de frontend e navegador
+
+Além de backend, banco e APIs, projetos derivados da Project Base devem considerar segurança no navegador.
+
+Pontos obrigatórios:
+
+- não colocar segredos no frontend;
+- não usar `NEXT_PUBLIC_` ou `VITE_` em variável secreta;
+- configurar variáveis reais no provedor de deploy, como Vercel;
+- não salvar dados sensíveis em `localStorage`;
+- evitar persistência indevida em `sessionStorage`;
+- revisar cache de dados privados;
+- não expor source maps públicos em produção sem decisão consciente;
+- não proteger plano pago apenas pela interface;
+- validar permissões no backend;
+- configurar CORS e CSP quando necessário.
+
+Documentos relacionados:
+
+- `docs/security/FRONTEND_SECURITY.md`
+- `docs/security/CORS_AND_CSP.md`
+- `docs/security/SECURITY_REVIEW_PROMPT.md`
+<!-- FRONTEND_SECURITY_OVERVIEW_END -->
+
 ## Documentos relacionados
 
 - `docs/security/SECURITY_CHECKLIST.md`

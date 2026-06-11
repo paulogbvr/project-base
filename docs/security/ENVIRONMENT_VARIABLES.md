@@ -154,6 +154,86 @@ Agentes nunca devem pedir para o usuário colar chaves reais em locais inseguros
 
 Se o usuário precisar de ajuda com variáveis, pedir para enviar apenas nomes das variáveis, prints sem valores ou placeholders.
 
+<!-- PUBLIC_ENV_PREFIXES_START -->
+## Variáveis públicas no Next.js e Vite
+
+Em projetos frontend, alguns prefixos tornam variáveis acessíveis no navegador.
+
+No Next.js:
+
+```txt
+NEXT_PUBLIC_
+```
+
+No Vite:
+
+```txt
+VITE_
+```
+
+Esses prefixos não significam segurança. Eles significam o oposto: a variável pode ser enviada para o frontend.
+
+## Regra obrigatória
+
+Nunca usar `NEXT_PUBLIC_` ou `VITE_` em segredo.
+
+Não usar esses prefixos para:
+
+- API key privada;
+- service role;
+- token de WhatsApp;
+- token de pagamento;
+- webhook secret;
+- client secret;
+- credencial de banco;
+- segredo de autenticação;
+- qualquer chave que gere custo, acesso ou permissão.
+
+## Variáveis reais de produção
+
+Variáveis reais devem ser configuradas no provedor de deploy, como Vercel, Render, Railway, Fly, Netlify ou outro.
+
+No repositório, manter apenas:
+
+- `.env.example`;
+- `.env.local.example`;
+- placeholders;
+- instruções sem chaves reais.
+
+Exemplo correto:
+
+```txt
+SUPABASE_SERVICE_ROLE_KEY=replace-with-your-service-role-key
+```
+
+Exemplo proibido:
+
+```txt
+SUPABASE_SERVICE_ROLE_KEY=chave-real-aqui
+```
+
+## Vercel
+
+Ao usar Vercel:
+
+- configurar variáveis no painel do projeto;
+- separar Production, Preview e Development quando necessário;
+- não colar chaves reais em arquivos versionados;
+- revisar se alguma chave foi marcada como pública por engano;
+- redeployar após alterar variáveis importantes.
+
+## Checklist
+
+- [ ] Nenhum segredo usa `NEXT_PUBLIC_`
+- [ ] Nenhum segredo usa `VITE_`
+- [ ] Variáveis reais estão no provedor de deploy
+- [ ] `.env.example` usa placeholders
+- [ ] `.env.local.example` usa placeholders
+- [ ] `.env` está no `.gitignore`
+- [ ] `.env.local` está no `.gitignore`
+- [ ] Variáveis de Preview/Production foram revisadas
+<!-- PUBLIC_ENV_PREFIXES_END -->
+
 ## Checklist
 
 - [ ] `.env.example` existe?

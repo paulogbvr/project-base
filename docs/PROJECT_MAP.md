@@ -138,6 +138,16 @@ Arquivos:
 
 ## Security
 
+<!-- FRONTEND_SECURITY_PROJECT_MAP_START -->
+### Segurança adicional de frontend
+
+Arquivos adicionados:
+
+- `docs/security/FRONTEND_SECURITY.md` — segurança de frontend, source maps, localStorage/sessionStorage, cache, SaaS pago e variáveis públicas.
+- `docs/security/CORS_AND_CSP.md` — padrões para CORS, CSP e headers de segurança.
+- `docs/security/SECURITY_REVIEW_PROMPT.md` — prompts reutilizáveis para auditoria de segurança com IA.
+<!-- FRONTEND_SECURITY_PROJECT_MAP_END -->
+
 Pasta:
 
 - `docs/security/`

@@ -201,6 +201,81 @@ Pasta:
 
 - `docs/design/`
 
+<!-- FRONTEND_SECURITY_README_START -->
+## Segurança de frontend, SaaS pago e navegador
+
+A Project Base também inclui uma camada específica para segurança de frontend e proteção contra acesso indevido.
+
+Essa camada foi criada para evitar problemas comuns em projetos web, SaaS, dashboards e sistemas feitos com agentes de IA.
+
+Pontos principais:
+
+- não colocar segredos no frontend;
+- não usar `NEXT_PUBLIC_` ou `VITE_` em variável secreta;
+- configurar variáveis reais no provedor de deploy, como Vercel;
+- não salvar dados sensíveis em `localStorage`;
+- não tratar `sessionStorage` como cofre;
+- não proteger plano pago apenas escondendo botão ou tela;
+- validar plano, assinatura e permissão no backend;
+- evitar retornar dados excessivos para o frontend;
+- revisar source maps em produção;
+- revisar CORS;
+- revisar CSP;
+- revisar cache de dados privados;
+- revisar DevTools, Network, Application e payloads antes do deploy.
+
+Arquivos importantes:
+
+- `docs/security/FRONTEND_SECURITY.md`
+- `docs/security/CORS_AND_CSP.md`
+- `docs/security/SECURITY_REVIEW_PROMPT.md`
+- `docs/security/SECURITY_CHECKLIST.md`
+- `docs/security/API_SECURITY.md`
+- `docs/security/ENVIRONMENT_VARIABLES.md`
+- `docs/security/SECRETS_AND_API_KEYS.md`
+- `docs/security/PEN_TEST_PLAN.md`
+
+Regra principal:
+
+O frontend não é lugar seguro para segredo, permissão crítica ou validação de plano pago.
+
+Se o usuário não pode acessar um dado, esse dado não deve ser enviado ao navegador.
+
+Se uma funcionalidade é paga, a autorização precisa ser validada no backend e, quando aplicável, reforçada no banco/RLS.
+
+## Revisão de segurança com IA
+
+A Project Base inclui um prompt próprio para revisão de segurança com agentes de IA.
+
+Use este documento sempre que criar ou alterar:
+
+- banco de dados;
+- autenticação;
+- permissões;
+- APIs;
+- links compartilhados;
+- storage;
+- webhooks;
+- pagamentos;
+- funcionalidades pagas;
+- dashboards privados;
+- áreas administrativas.
+
+Arquivo:
+
+- `docs/security/SECURITY_REVIEW_PROMPT.md`
+
+Frequência recomendada:
+
+- antes do primeiro deploy;
+- após mudanças no banco;
+- após mudanças em login/permissão;
+- após criar APIs sensíveis;
+- após criar links públicos;
+- após integrar pagamento;
+- semanalmente em projetos ativos.
+<!-- FRONTEND_SECURITY_README_END -->
+
 ## Links compartilhados
 
 A Project Base considera que muitos projetos terão links para clientes, propostas, pedidos, pagamentos, arquivos ou atualizações.

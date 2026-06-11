@@ -145,3 +145,44 @@ Ao final de cada tarefa, responder com:
 - próximo passo sugerido.
 
 Se arquivos de relatório foram atualizados, mencionar isso.
+
+<!-- FRONTEND_SECURITY_AGENT_RULES_START -->
+## Regras obrigatórias de segurança de frontend
+
+Antes de implementar ou revisar qualquer projeto derivado da Project Base, o agente deve considerar segurança de frontend como parte obrigatória da tarefa.
+
+O agente deve lembrar que o frontend não é um lugar seguro para:
+
+- segredos;
+- tokens privados;
+- service role;
+- regras críticas de permissão;
+- validação de plano pago;
+- dados que o usuário não deveria acessar;
+- chaves de API privadas;
+- client secret;
+- webhook secret.
+
+Regras obrigatórias:
+
+- nunca colocar segredo em `NEXT_PUBLIC_`;
+- nunca colocar segredo em `VITE_`;
+- nunca colocar service role no client;
+- nunca proteger plano pago apenas escondendo botão ou tela;
+- nunca confiar em `localStorage` para permissão, plano ou autenticação crítica;
+- nunca enviar ao frontend dados que o usuário não deveria ver;
+- sempre validar permissão, assinatura, plano e escopo no backend;
+- sempre revisar RLS quando usar Supabase;
+- sempre revisar CORS, CSP, cache e source maps quando houver deploy público.
+
+Arquivos que devem ser lidos em tarefas com segurança, autenticação, banco, API, pagamento, storage ou frontend privado:
+
+- `docs/security/FRONTEND_SECURITY.md`
+- `docs/security/CORS_AND_CSP.md`
+- `docs/security/SECURITY_REVIEW_PROMPT.md`
+- `docs/security/SECURITY_CHECKLIST.md`
+- `docs/security/API_SECURITY.md`
+- `docs/security/ENVIRONMENT_VARIABLES.md`
+- `docs/security/SECRETS_AND_API_KEYS.md`
+- `docs/database/RLS_POLICIES.md`
+<!-- FRONTEND_SECURITY_AGENT_RULES_END -->

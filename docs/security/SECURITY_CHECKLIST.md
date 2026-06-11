@@ -103,6 +103,36 @@ Este checklist deve ser usado antes de publicar, apresentar para cliente, libera
 - [ ] Link privado não gera preview com informação confidencial
 - [ ] Fallback de preview existe
 
+<!-- FRONTEND_SECURITY_CHECKLIST_START -->
+## Frontend e navegador
+
+- [ ] Nenhum segredo está no frontend
+- [ ] Nenhum segredo usa `NEXT_PUBLIC_`
+- [ ] Nenhum segredo usa `VITE_`
+- [ ] Variáveis reais de produção estão configuradas na Vercel/provedor, não no código
+- [ ] Source maps públicos estão desativados em produção, salvo decisão consciente
+- [ ] `localStorage` não guarda dado sensível
+- [ ] `sessionStorage` não guarda segredo
+- [ ] Logout limpa estado local relevante
+- [ ] Dados privados não ficam cacheados indevidamente
+- [ ] Plano pago não é protegido apenas por botão/tela no frontend
+- [ ] Backend valida plano, assinatura e permissão
+- [ ] Frontend não recebe dados que o usuário não deveria ver
+- [ ] DevTools não revela token, segredo ou payload sensível
+
+## CORS, CSP e headers
+
+- [ ] CORS não usa wildcard em API privada
+- [ ] Origens permitidas estão explícitas
+- [ ] Localhost só é permitido em desenvolvimento
+- [ ] Métodos e headers permitidos são mínimos
+- [ ] CSP foi considerada
+- [ ] Scripts externos foram revisados
+- [ ] Conexões externas foram revisadas
+- [ ] Frames foram bloqueados ou limitados
+- [ ] Headers de segurança foram considerados
+<!-- FRONTEND_SECURITY_CHECKLIST_END -->
+
 ## Interface
 
 - [ ] Erros são claros

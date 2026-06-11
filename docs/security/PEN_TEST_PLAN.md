@@ -126,6 +126,79 @@ Registrar decisões em:
 
 - `docs/project-memory/DECISIONS.md`
 
+<!-- FRONTEND_PENTEST_PLAN_START -->
+## Testes de segurança de frontend
+
+Durante revisão manual ou pentest básico, testar o que um usuário consegue descobrir pelo navegador.
+
+## DevTools
+
+Abrir DevTools e revisar:
+
+- Network;
+- Application;
+- localStorage;
+- sessionStorage;
+- cookies visíveis;
+- bundles JavaScript;
+- payloads de API;
+- headers;
+- source maps;
+- respostas com dados excessivos.
+
+## Testes obrigatórios
+
+- [ ] Verificar se há secrets no bundle
+- [ ] Verificar se há secrets no Network
+- [ ] Verificar se há dados sensíveis em localStorage
+- [ ] Verificar se há dados sensíveis em sessionStorage
+- [ ] Verificar se logout limpa estado sensível
+- [ ] Verificar se endpoints privados falham sem login
+- [ ] Verificar se endpoints privados falham com usuário sem permissão
+- [ ] Verificar se usuário comum não acessa dados de admin
+- [ ] Verificar se usuário de uma organização não acessa outra
+- [ ] Verificar se plano gratuito não chama recurso pago diretamente
+- [ ] Verificar se IDs previsíveis não liberam acesso
+- [ ] Verificar se source maps públicos estão desativados
+- [ ] Verificar CORS em rotas privadas
+- [ ] Verificar CSP ou plano de CSP
+- [ ] Verificar cache de páginas privadas
+
+## Teste de plano pago
+
+Tentar acessar recurso pago por:
+
+- URL direta;
+- chamada direta de API;
+- alteração de payload;
+- alteração de localStorage;
+- alteração de estado no DevTools;
+- usuário sem assinatura;
+- assinatura vencida;
+- usuário de outro workspace.
+
+O acesso deve ser negado pelo backend, não apenas pela tela.
+
+## Teste de dados em excesso
+
+Verificar se APIs retornam apenas o necessário.
+
+Se uma API retorna dados privados e o frontend apenas esconde visualmente, isso deve ser tratado como falha.
+
+## Frequência recomendada
+
+Rodar revisão de segurança:
+
+- antes do primeiro deploy;
+- após alteração em banco;
+- após alteração em login/permissões;
+- após criar rota de API;
+- após criar integração externa;
+- após criar link público;
+- após criar funcionalidade paga;
+- semanalmente em projetos ativos.
+<!-- FRONTEND_PENTEST_PLAN_END -->
+
 ## Checklist final
 
 - [ ] Testes críticos feitos
